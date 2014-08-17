@@ -27,7 +27,7 @@ else {
 function sendAjaxResponse($added) {
   header("Content-Type: application/json");
   if($added) {
-    header( 'Status: 201' );
+    header( 'Status: 200' );
     echo( json_encode($added) );
   }
   else {

@@ -22,6 +22,7 @@ function handleSubmit() {
 }
 
 function postComment(data) {
+  console.log("postComment");
   $.ajax({
     type: 'POST',
     url: 'post_comment.php',
@@ -35,12 +36,13 @@ function postComment(data) {
 }
 
 function postSuccess(data, textStatus, jqXHR) {
+    console.log("postSuccess");
   $('#commentform').get(0).reset();
   displayComment(data);
 }
 
 function postError(jqXHR, textStatus, errorThrown) {
-  // display error
+  console.log("postError");
 }
 
 function displayComment(data) {
@@ -82,23 +84,6 @@ function parseDisplayDate(date) {
                 date.getFullYear();
   return display;
 }
-
-$(function() {
-  
-  $(document).keyup(function(e) {
-    e = e || window.event;
-    if(e.keyCode === 85){
-      displayComment({
-        "comment_id": 'comment_1',
-        "comment_post_ID": 1,
-        "date": "Tue, 21 Feb 2012 18:33:03 +0000",
-        "comment": "The realtime web rocks!",
-        "comment_author": "Phil Leggetter"
-      });
-    }
-  });
-  
-});
 
 Pusher.log = function(msg) {
   if(console && console.log) {
